@@ -4,4 +4,5 @@
 ![[Notes/Further Mathemathics/Mechanics/Momentum and Impulse/Conservation_Momentum/Conservation_Momentum_T.md#^frame=NcZvFS3d6W9fGoxuPqS8t]]
 ### Principle State Mathematically
 ![[Notes/Further Mathemathics/Mechanics/Momentum and Impulse/Conservation_Momentum/Conservation_Momentum_T.md#^frame=82C55ERAG2xMAiOie9akP]]
-### Why the principle applies
+### Why the principle applies [[Newtons_Third_Law]]
+![[Notes/Further Mathemathics/Mechanics/Momentum and Impulse/Conservation_Momentum/Conservation_Momentum_T.md#^frame=6S1a-a3wvoUSgQwGzVeWM]]
