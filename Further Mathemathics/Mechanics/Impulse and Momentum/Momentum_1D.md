@@ -1,3 +1,3 @@
-![[Momentum_1D_h.md#momentum_calculation]]
 ### Momentum Calculation
-![[Momentum_1D_h]]
+![[Notes/Further Mathemathics/Mechanics/Impulse and Momentum/Momentum_1D_h.md#^group=BIpivgBlEMoEJeYuhA4Fe]]
+
