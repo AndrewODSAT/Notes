@@ -1,4 +1,4 @@
-### Momentum Calculation
-![[Notes/Further Mathemathics/Mechanics/Impulse and Momentum/Momentum_1D_h.md#^group=BIpivgBlEMoEJeYuhA4Fe]]
-
-
+### Momentum #Calculation
+![[Momentum_1D_T#^group=BIpivgBlEMoEJeYuhA4Fe]]
+### Momentum #Units
+![[Momentum_1D_T#^frame=9rME9ewfkCY-oEdPgZbPf]]
