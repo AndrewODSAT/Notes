@@ -1,3 +1,3 @@
 # Notes
 
-this is the notes readme
+This repo will be used to store 
