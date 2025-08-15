@@ -1,6 +1,3 @@
 ![[hooks-law.pdf]]
 
-
-
-
-
+NOTE
