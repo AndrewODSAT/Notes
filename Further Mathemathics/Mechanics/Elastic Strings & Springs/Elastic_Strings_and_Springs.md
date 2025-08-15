@@ -1,1 +1,1 @@
-![[Hookes_Law.pdf]]
+![[Hookes_Law]]
