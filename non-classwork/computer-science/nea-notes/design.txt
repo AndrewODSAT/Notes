@@ -1,0 +1,18 @@
+DESIGN
+
+The GUI and CPU Simulator should be decoupled. 
+I plan on doing this by having the CPU Simulator having no GUI logic,
+it should only create "state saves" with maybe what event just occured for animation.
+For example it should say what the value in all the registers are along with some control signals.
+
+PROTOTYPE 1:
+Should be able to fetch, decode lda, and execute lda
+Should be built in C and C++
+Should be run in unison (the ui and the simulator)
+Should have simple a text based interface
+Should pause after each microstep
+Should have 8 bit data, 8 bit address
+Should have PC, ACC, MDR, MAR, CLOCK, CIR
+Should have a FSM for control unit
+Should just use direct memory addressing
+*Should have 2^8 bytes of memory (2048 bits)
