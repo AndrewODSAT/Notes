@@ -1,0 +1,15 @@
+1) x, position-1, currentData
+2)O(n)
+3)it grows in linear time in best case so it will grow in
+    proportion with n
+4)O(n)
+5)20ms
+6)Big O time complexity refers to how long the time
+    of completion grows compared to how large the 
+    dataset is. So for linear (what is provided in Q)
+    the time would grow proportionally to the size of 
+    the dataset/problem. 
+7)Big O space complexity refers to how much memory
+    needed grows compared to how large the 
+    dataset is. So for polynomial it would grow 
+    with dataset^n
