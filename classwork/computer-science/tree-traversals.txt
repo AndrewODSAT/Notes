@@ -1,0 +1,29 @@
+20, 80, 75, 35, 220, 450, 602, 600, 402, 100
+
+100, 35, 402, 20, 75, 220, 600, 80, 450, 602
+
+depth
+c, f, m, d ,k, j, b, t, l, a
+
+Root node A
+J, D, C, M, F
+K
+L, B
+T
+
+
+breadth
+a, j, l, d, k, b ,t, c, m, f
+
+Visit root node 'A'
+Visit 'J' and 'L'
+Visit 'D' and 'K' from 'J'
+Visit 'B' and 'T' from 'L'
+Visit 'C' and 'M' from 'D'
+Visit 'F'
+
+
+
+Depth first require less memory than breadth
+first. It is also quicker if looking at deeper
+parts of the tree.

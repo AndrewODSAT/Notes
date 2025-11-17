@@ -1,3 +1,8 @@
+'''
+This is very inefficient but is the most accurate model of the problem I could think of.
+Also this is good practice for datastructures for the exams.
+'''
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -66,15 +71,20 @@ cog_1_node = cog_1.head
 cog_2_node = cog_2.head
 cog_3_node = cog_3.head
 
+cog_1.output()
+cog_2.output()
+cog_3.output()
+
 S = 0
 T = 0
 
-for _ in range(1, 793):
+
+
+for _ in range(792):
     val_1 = cog_1_node.value
     val_2 = cog_2_node.value
     val_3 = cog_3_node.value
     num = int(str(val_1) + str(val_2) + str(val_3))
-    print(num)
     S += num
 
     T += val_1 * val_2 * val_3
@@ -83,4 +93,12 @@ for _ in range(1, 793):
     cog_2_node = cog_2_node.next
     cog_3_node = cog_3_node.next
 
+    print(f"Current string: {num}\nCurrent product: {val_1 * val_2 * val_3}\n")
+
 print(f"T: {T}\nS: {S}\nS/T: {S/T}")
+
+cog_1.output()
+cog_2.output()
+cog_3.output()
+
+#p2 solution by eli 3097

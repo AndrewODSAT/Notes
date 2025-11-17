@@ -1,0 +1,37 @@
+Note that underlining a headline means they are primary keys
+
+first normal form:
+    all fields must be unique
+    all records must have a primary key
+    no too records can be identical
+    values in fields should be from the same domain -> they should be of the same data type
+    values in fields should be atomic -> each field should only have a single value
+
+second normal form:
+    The data is already in 1NF
+    Any partial dependencies have been removed.
+        So every other field should depend on the all of the primary key.
+
+        A partial dependency only occurs with a componsite key. 
+        It is when only one of the primary keys is a dependency of a field.
+
+       However you should remove the many to many relationships.
+       To do this look for fields where you can infer the other fields values from it.
+       You can then create a new table for these field values that can be infered from each other.
+
+       Then make a new Linking table, that will link a field from the first table to the second.
+
+       for example if you had a database with students and then their course was also 
+       there along with course info this would be a partial dependency as the course 
+       info isn't dependant on the student but on the course id. So create a new table for
+       course then create a table for linking a student to a course
+
+third normal form:
+    The data must already be in 2NF
+    Any transitive dependencies have been removed
+
+        So remove all non-key dependencies
+        A non key dependency in one where the value of a field is determined 
+        by the value of another field that is not part of the primary key.
+
+    So it is bad if you can determine a field by something that isn't the primary key.
