@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 11}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+There is a line segment with end points (1, 2) and (12, a) where a > 2.
+
+The line segment is rotated around the x-axis, making a frustrum $f_x$.\\
+The line segment is rotated around the y-axis, making a frustrum $f_y$.
+
+The difference between the volumes of these 2 frustrums is 50 cubic units.\\
+Find the sum of all the possible values of a
+
+\section{Problem Solution}
+
+\subsection{Modelling the line segment}
+To do this I will treat this problem as a volumes of revolution problem.\\
+I will do this by modelling the line segment as a line and when taking the integral I will
+set the limits to the line segments limits.
+
+% Finding gradiant
+\begin{align*}
+    m &= \frac{a-2}{12-1}\\
+      &= \frac{a-2}{11}
+\end{align*}
+% finding equation of line, y^2 and x^2
+\begin{align*}
+    \implies &y-2 = \frac{a-2}{11}(x - 1)\\
+    \implies &y   = \frac{a-2}{11}(x-1) + 2\\
+    \implies &y^2 = \left(\frac{a-2}{11}(x-1) + 2\right)^2\\
+             &    = \frac{(a-2)^2}{121}(x-1)^2 + \frac{4(a-2)}{11}(x - 1) + 4\\
+             &    = \frac{(a-2)^2}{121}(x^2-2x+1) + \frac{4(a-2)}{11}(x - 1) + 4\\
+    \implies& x = \frac{11(y-2)}{a-2} + 1\\
+    \implies& x^2 = \frac{121(y-2)^2}{(a-2)^2} + \frac{22(y-2)}{a-2} + 1\\
+            & = \frac{121}{(a-2)^2}(y^2-4y+4) + \frac{22}{a-2}(y-2) + 1\\
+\end{align*}
+% finding fulcrum from rotation around x-axis (f_x)
+\begin{align*}
+    &\pi\int^{12}_1 \left( \frac{(a-2)^2}{121}(x^2-2x+1) + \frac{4(a-2)}{11}(x - 1) + 4 \right) dx\\
+    =&\frac{(a-2)^2}{121}\pi\int^{12}_1 (x^2-2x+1)dx + \frac{4(a-2)}{11}\pi\int^{12}_1(x-1)dx + \pi\int^{12}_1 4dx\\
+    =&\frac{(a-2)^2}{121}\pi\left[\frac{x^3}{3}-x^2+x\right]^{12}_1 + 
+        \frac{4(a-2)}{11}\pi\left[\frac{x^2}{2}-x\right]^{12}_1 +
+        \pi\left[4x\right]^{12}_1\\
+    =&\frac{(a-2)^2}{121}\pi\left(\frac{12^3}{3}-12^2+12 - \left(\frac{2^3}{3}-2^2+2\right)\right)\\
+    +&\frac{4(a-2)}{11}\pi\left(\frac{12^2}{2}-12 - \left(\frac{2^2}{2}-2\right)\right)\\
+    +&\pi(4\times12 - 4\times2)\\
+    =& \frac{1330(a-2)^2}{121\times3}\pi + \frac{240(a-2)}{11}\pi + 40\pi\\
+\end{align*}
+
+Now do the same for $f_y$...
+
+% finding fulcrum from rotation around y-axis (f_y)
+\begin{align*}
+    f_y &= \pi\int^a_2 \left(\frac{121}{(a-2)^2}(y^2-4y+4) + \frac{22}{a-2}(y-2) + 1 \right)dy\\
+        & = \frac{121}{(a-2)^2}\pi\int^a_2(y^2-4y+4)dy + \frac{22}{a-2}\pi\int^a_2(y-2)dy + \pi\int^a_21dy\\
+        & = \frac{121}{(a-2)^2}\pi\left[\frac{y^3}{3}-2y^2+4y\right]^a_2
+          + \frac{22}{a-2}\pi\left[\frac{y^2}{2}-2y\right]^a_2
+          + \pi\left[y\right]^a_2\\
+        & = \frac{121}{(a-2)^2}\pi\left(\frac{a^3}{3}-2a^2+4a - 
+            \left( \frac{2^3}{3}-2\times2^2+4\times2\right)\right)\\
+        & + \frac{22}{a-2}\pi\left(\frac{a^2}{2}-2a - \left( \frac{2^2}{2} - 2\times2\right)\right)\\
+        & + \pi\left(a - 2\right)\\
+        & = \frac{121}{(a-2)^2}\pi\left(\frac{a^3}{3}-2a^2+4a-\frac{8}{3}\right)
+          + \frac{22}{a-2}\pi\left(\frac{a^2}{2}-2a+2\right)
+          + \pi\left(a - 2\right)\\
+\end{align*}
+
+Now say they are equal with a differerance of 50
+\begin{align*}
+        & \frac{1330(a-2)^2}{121\times3}\pi + \frac{240(a-2)}{11}\pi + 40\pi \pm 50\\
+        & = \frac{121}{(a-2)^2}\pi\left(\frac{a^3}{3}-2a^2+4a-8\right)
+          + \frac{22}{a-2}\pi\left(\frac{a^2}{2}-2a+2\right)
+          + \pi\left(a - 2\right)\\
+      \text{Now multiply by $(a-2)^2$ and divide by $\pi$}\\
+        & \frac{1330(a-2)^4}{121\times3} + \frac{240(a-2)^3}{11} + (40 \pm \frac{50}{\pi})(a-2)^2\\
+        & = 121\left(\frac{a^3}{3}-2a^2+4a-8\right)
+          + 22(a-2)\left(\frac{a^2}{2}-2a+2\right)
+          + (a - 2)^3\\
+          \text{now multiply by $121\times3=363$}\\
+        \implies & 1330(a-2)^4+7920(a-2)^3 +363(40 \pm \frac{50}{\pi})(a-2)^2\\
+       & = 14641(a^3-6a^2+12a-24) + 3993(a-2)(a^2-4a+4)+363(a-3)^3\\
+       & = 14641(a^3-6a^2+12a-24) + 4356(a-2)^3\\
+       & = 14641(a^3-6a^2+12a-24) + 4356(a-2)^3
+\end{align*}
+
+\end{document}
