@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 14}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+\huge
+$\log_2(x) = \log_3(y)$ passes through (1,1) and (8,27).
+
+A is the area between the curve and x axis between x=1 and x=8
+
+B is the area between the curve and y axis between y=1 and y=27
+
+Find |A - B|
+\section{Problem Solution}
+
+\begin{align*}
+    y = 3^{\log_2(x)}\\
+    \int^8_1 3^{\log_2(x)}dx\\
+\end{align*}
+
+Sub into calculator and get: A = 83.17335
+
+\begin{align*}
+    x = 2^{\log_3(y)}\\
+    \int^27_1 2^{\log_3(y)}dy\\
+\end{align*}
+
+Sub into calculator and get: B = 131.8266
+
+\[
+    \therefore |A - B| = 48.65329
+\]
+
+\end{document}

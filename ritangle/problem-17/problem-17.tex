@@ -1,0 +1,118 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.2in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 17}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+\huge
+p, q, r are random integer between 0, 6 inclusive.
+
+these values represent the ratio of angle of a triangle
+inside a circle with its verticies on the circles 
+circumferance.
+
+what is the probability that the centre of the circle 
+isn't in the triangle/on the triangle edge.
+
+\section{Problem Solution}
+\[k (p + q + r) = 180\]
+
+The largest angle must be greater than 90 degrees following 
+something like the circle theorem that states the angle is
+90 degrees when it line passes through the centre of the 
+circle.
+
+This means that if p is the largest angle, then:
+\begin{align*} 
+    \frac{p}{p + q + r} > 0.5 \\
+    \implies p > (q+r)
+\end{align*} 
+
+The dice can be moddeled as a discrete random distribution.
+So the PGF would be:
+\begin{align*}
+    G_p(t)=G_q(t)=G_r(t)\\
+    = \frac{1}{6}(t^6+t^5+t^4+t^3+t^2+t)\\
+\end{align*}
+
+And then q+r,p+q and p+r can be moddeled by the PGF:
+\begin{align*}
+    &G_q(t) \times G_r(t) = G_q(t) \times G_p(t)
+        = G_p(t) \times G_r(t)\\
+    &= \left( \frac{1}{6}(t^6+t^5+t^4+t^3+t^2+t) \right)^2\\
+    &= \frac{1}{36}\left(t^6+t^5+t^4+t^3+t^2+t\right)^2\\
+    &= \frac{1}{36}\left(t^{6}+t^5+t^4+t^3+t^2+t\right)
+        \left(t^6+t^5+t^4+t^3+t^2+t\right)\\
+    &=\frac{1}{36}(t^{12}+t^{11}+t^{10}+t^9+t^8+t^7)\\
+    &+\frac{1}{36}(t^{11}+t^{10}+t^9+t^8+t^7+t^6)\\
+    &+\frac{1}{36}(t^{10}+t^9+t^8+t^7+t^6+t^5)\\
+    &+\frac{1}{36}(t^9+t^8+t^7+t^6+t^5+t^4)\\
+    &+\frac{1}{36}(t^8+t^7+t^6+t^5+t^4+t^3)\\
+    &+\frac{1}{36}(t^7+t^6+t^5+t^4+t^3+t^2)\\
+    &=\frac{1}{36}(t^{12}+2t^{11}+3t^{10}+4t^9+5t^8+6t^7\\
+    &+5t^6+4t^5+3t^4+2t^3+t^2)\\
+\end{align*}
+
+So now we just need to find the probability that the largest
+angle is greater than the sum of the other 2 angles. To do
+this I can just check the cases where one of the angles is
+greater than the other 2 (as they are all same distributions).
+So assuming p is the largerst angle ratio, I should have:
+\[ 
+    P(q+r=i) = 
+    \begin{cases}
+        \frac{i-1}{36}  & 1<=i<=6\\
+        \frac{13-i}{36} & 7<=i<=12\\
+    \end{cases} 
+\]
+
+\[ 
+    P(p>i) = 
+    \begin{cases}
+        \frac{6-i}{6} & 1<=i<=6\\
+        0             & 7<=i<=12\\
+    \end{cases} 
+\]
+
+\[ 
+    P(p>q+r) = \sum_{i=1}^{12} (P(q+r=i) \times P(p>i))\\
+\]
+
+\begin{align*}
+    P(p>q+r) &= \sum_{i=1}^{12} (P(q+r=i) \times P(p>i))\\
+    &= \sum_{i=1}^{6} 
+        \left( \frac{i-1}{36}\times \frac{6-i}{6} \right)
+    + \sum_{i=7}^{12}
+        \left( \frac{13-i}{36}\times 0 \right)\\
+    &= \sum_{i=1}^{6} 
+        \left( \frac{(i-1)(6-i)}{216}\right)\\
+    &= \sum_{i=1}^{6} 
+        \left( \frac{-i^2+7i-6}{216})\right)
+\end{align*}
+
+\text{Now decompose and evaluate summations:}
+
+\begin{align*}
+    &= \frac{- 1}{216}\sum_{i=1}^{ 6} (i^2)
+     + \frac{  7}{216}\sum_{i=1}^{ 6} (i)
+     + \frac{- 6}{216}\sum_{i=1}^{ 6} (1)\\
+    %
+    &= \frac{- 1\times 6}{216\times6}(6+1)(12+1)\\
+    &+ \frac{  7\times 6}{216\times2}(6+1)\\
+    &+ \frac{- 6\times (6-1)}{216}\\
+    %
+    &= \frac{13}{108}
+\end{align*}
+
+\end{document}

@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 11}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+\huge
+The values a, b and c can be 0 or 1.
+
+There are 8 triples (permutations) to consider
+
+Find:
+\[\sum_{a,b,c}\int^c_{-1}(x-a)^b(x+b)^cx^adx\]
+
+\section{Problem Solution}
+So there are a probably better ways of doing this 
+but im feeling lazy so i will just be doing the simple 
+method of brute force.
+
+When a,b,c = 0,0,0
+
+\begin{align*}
+    &\int^0_{-1}(x-0)^0(x+0)^0x^0dx\\
+    =&\int^0_{-1}1dx\\
+    =&\left[x\right]^0_{-1}\\
+    =& 1
+\end{align*}
+
+When a,b,c = 0,0,1
+\begin{align*}
+    &\int^1_{-1}(x-0)^0(x+0)^1x^0dx\\
+    =&\int^1_{-1}xdx\\
+    =&\left[\frac{x^2}{2}\right]^1_{-1}\\
+    =& \frac{1}{2} - \frac{1}{2}\\
+    =& 0
+\end{align*}
+
+When a,b,c = 0,1,0
+\begin{align*}
+    &\int^0_{-1}(x-0)^1(x+1)^0x^0dx\\
+    =&\int^0_{-1}xdx\\
+    =&\left[\frac{x^2}{2}\right]^0_{-1}\\
+    =& - \frac{1}{2}\\
+\end{align*}
+
+When a,b,c = 0,1,1
+\begin{align*}
+    &\int^1_{-1}(x-0)^1(x+1)^1x^0dx\\
+    =&\int^1_{-1}(x^2 + x)dx\\
+    =&\left[\frac{x^3}{3} + \frac{x^2}{2}\right]^1_{-1}\\
+    =& \frac{1}{3} + \frac{1}{2} 
+     - \left(\frac{-1}{3} + \frac{1}{2}\right)\\
+    =& \frac{2}{3}
+\end{align*}
+
+When a,b,c = 1,0,0 (repeats a,b,c=0,1,0)
+\begin{align*}
+    &\int^0_{-1}(x-1)^0(x+0)^0x^1dx\\
+    =&\int^0_{-1}xdx\\
+    =&\left[\frac{x^2}{2}\right]^0_{-1}\\
+    =& - \frac{1}{2}\\
+\end{align*}
+
+When a,b,c = 1,0,1
+\begin{align*}
+    &\int^1_{-1}(x-1)^0(x+0)^1x^1dx\\
+    =&\int^1_{-1}x^2dx\\
+    =&\left[\frac{x^3}{3}\right]^1_{-1}\\
+    =&\frac{2}{3}\\
+\end{align*}
+
+When a,b,c = 1,1,0
+\begin{align*}
+    &\int^0_{-1}(x-1)^1(x+1)^0x^1dx\\
+    =&\int^0_{-1}(x^2 - x)dx\\
+    =&\left[\frac{x^3}{3} - \frac{x^2}{2}\right]^0_{-1}\\
+    =&\frac{5}{6}\\
+\end{align*}
+
+When a,b,c = 1,1,1
+\begin{align*}
+    &\int^1_{-1}(x-1)^1(x+1)^1x^1dx\\
+    =&\int^1_{-1}(x^3 - x)dx\\
+    =&\left[\frac{x^3}{3} - \frac{x^2}{2}\right]^0_{-1}\\
+    =&\frac{5}{6}\\
+\end{align*}
+
+\begin{align*}
+    &\therefore \sum_{a,b,c}\int^c_{-1}(x-a)^b(x+b)^cx^adx\\
+    =& 1 + 0 - \frac{1}{2} + \frac{2}{3} - \frac{1}{2}
+         + \frac{2}{3} + \frac{5}{6}\\
+    =& \frac{13}{6}
+\end{align*}
+
+\end{document}

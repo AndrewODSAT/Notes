@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 14}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+\huge
+Given a 45x45 square, how many landscape rectangles are there?
+
+\section{Problem Solution}
+With the 4x4 there are 35. This is because there are 
+\begin{align*}
+    12&:2\times1,\\
+    8&: 3\times1,\\
+    4&: 4\times1,\\
+    6&: 3\times2,\\
+    3&: 4\times2,\\
+    2&: 4\times3 \\
+    =& 35
+\end{align*}
+
+Or formatted differently (think about the overhang after
+shifting a rectangle each time, it will be the number of 
+rectangle columns - 1 and similarly for rows so if you 
+subtract that from the total unit shifts you have the number
+of combos)
+
+\begin{align*}
+    (4-1) \times (4-0)&: 2\times1,\\
+    (4-2) \times (4-0)&: 3\times1,\\
+    (4-3) \times (4-0)&: 4\times1,\\
+    (4-2) \times (4-1)&: 3\times2,\\
+    (4-3) \times (4-1)&: 4\times2,\\
+    (4-3) \times (4-2)&: 4\times3,\\
+(4-(col-1)) \times (4-(row-1))&: c\times r\\
+\end{align*}
+
+So for 45 it would be 
+\[
+    \sum^{45}_{row=1} {\sum^{45}_{col=row+1}} 
+        (45-(col-1)) \times (45-(row-1))
+\]
+Sub into desmos and get: 519915
+
+\end{document}

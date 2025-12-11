@@ -68,8 +68,9 @@ int main(){
         }
     }
 
-    printf("Min: %f\nMin Hour: %d\nMin K: %d\n", min, min_h, min_k);
-    printf("Alpha: %f \nBeta: %f \nGamma: %f \n", min_alpha, min_beta, min_gamma);
+    printf("Min: %f, Min Hour: %d, Min K: %d\n", min, min_h, min_k);
+    printf("Alpha: %f, Beta: %f, Gamma: %f \n", min_alpha, min_beta, min_gamma);
+    printf("Alpha + Beta + Gamma = %f\n", min_alpha+min_beta+min_gamma);
 }
 
 /*

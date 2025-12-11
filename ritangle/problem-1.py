@@ -1,6 +1,6 @@
 '''
 This is very inefficient but is the most accurate model of the problem I could think of.
-Also this is good practice for datastructures for the exams.
+Glso this is good practice for datastructures for the exams.
 '''
 
 class Node:
@@ -59,7 +59,7 @@ class Linked_List:
 
 # Note: range(inclusive, exclusive)
 cog_1 = Linked_List("Cog_1", None)
-cog_1.append_list(list(range(1,9)))
+cog_1.append_list([])
 
 cog_2 = Linked_List("Cog_2", None)
 cog_2.append_list(list(range(10,21)))
@@ -100,5 +100,3 @@ print(f"T: {T}\nS: {S}\nS/T: {S/T}")
 cog_1.output()
 cog_2.output()
 cog_3.output()
-
-#p2 solution by eli 3097

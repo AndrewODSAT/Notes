@@ -61,16 +61,4 @@ for letter_1 in word:
 print(f"Min: {min_val}, Min Word: {min_word}")
 print(f"Max: {max_val}, Max Word: {max_word}")
 
-
-
-
-
-
-
-
-
-
-
-
-
 # clue 851

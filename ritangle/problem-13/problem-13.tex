@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Ritangle Question 13}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Problem Description}
+\huge
+Between 0 and 100 hours (not including 100:00:00) on 
+stopwatch how many times will exactly 2 unique digits 
+be displayed.
+\section{Problem Solution}
+
+The Digits ranges are like so:
+\begin{align*}
+    &Digit_{H,0}: {0-9}\\
+    &Digit_{H,1}: {0-9}\\
+    &Digit_{M,0}: {0-5}\\
+    &Digit_{M,1}: {0-9}\\
+    &Digit_{S,0}: {0-5}\\
+    &Digit_{S,1}: {0-9}\\
+\end{align*}
+So there are 4 between 0 and 9 AND there are 2 between 0 and 5.
+
+For the combinations where the digits are less than 6 there are
+$2^6 \times \binom{6}{2} = 64 \times 15 = 960$ combinations. 
+This is because for a unique pair, each digit can be 1 of 2
+states, so there are $2^6$ combinations. And there are 15 
+unique pairs.
+
+For the combinations where one of the digits is >=6 and the
+other is <=6 there are 0
+$2^4 \times 4 \times 6 = 384$ combinations because for the
+digits between 6 and 9 there are 4 with 4 different numbers and
+for the digits between 0 and 5 there are 2 with 6 different
+numbers however these 2 must be the same.
+
+For the combination where both of the digits are >=6 then
+there are $2^6 \times \binom{4}{2} = 64 \times 6 = 384$
+combinations.
+
+So in total there are 960 + 384 + 384 = 1728 combinations
+\end{document}
