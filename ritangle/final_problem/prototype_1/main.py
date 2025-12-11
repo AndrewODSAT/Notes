@@ -80,25 +80,25 @@ class PlaneGUI:
         if len(lines) < 2:
             return None
 
-        #vertices_parts = lines[0].strip().split()
-        #vertices = [list(map(float, x_y_pair.split(","))) for x_y_pair in vertices_parts]
-        #_vector_parts = lines[1].strip().split()
-        #_vectors = [list(map(float, x_y_pair.split(","))) for x_y_pair in t_vector_parts]
-        ref_point, angle, side_length = lines[0].strip().split()
-        ref_point = ref_point.split(",")
-        angle = float(angle)
-        side_length = float(side_length)
+        vertices_parts = lines[0].strip().split()
+        vertices = [list(map(float, x_y_pair.split(","))) for x_y_pair in vertices_parts]
+        t_vector_parts = lines[1].strip().split()
+        t_vectors = [list(map(float, x_y_pair.split(","))) for x_y_pair in t_vector_parts]
+        #ref_point, angle, side_length = lines[0].strip().split()
+        #ref_point = ref_point.split(",")
+        #angle = float(angle)
+        #side_length = float(side_length)
 
-        self.unit_cell.set_polygon_parallelogram(ref_point, side_length, angle)
-#        self.unit_cell.polygon = Polygon(vertices)
-        # self.unit_cell.t_vectors = t_vectors
+        #self.unit_cell.set_polygon_parallelogram(ref_point, side_length, angle)
+        self.unit_cell.polygon = Polygon(vertices)
+        self.unit_cell.t_vectors = t_vectors
 
         for line in raw.splitlines()[2:]:
             if line.strip() == "":
                 continue
             parts = line.split()
             if len(parts) != 3:
-                print("Skipping bad line:", line)
+                print("This isn't right, too few lines:", line)
                 continue
             x, y, r = float(parts[0]), float(parts[1]), float(parts[2])
             self.unit_cell.fundamental_circles.append(Point(x,y).buffer(r))
@@ -108,6 +108,9 @@ class PlaneGUI:
         self.update_gui()
         print("Updated circles")
         print(f"P: {self.unit_cell.calculate_p()}")
+        print(f"Area: {self.unit_cell.polygon.area}")
+        print(f"num grid points: {len(self.unit_cell.polygon_grid_points)}")
+        print(f"num circles: {self.unit_cell.polygon_grid_points}")
 
     def get_circle_radius(circle):
         cx, cy = circle.x, circle.y
@@ -151,7 +154,7 @@ class UnitCell:
         self.fundamental_circles = []
         self.radii = radii
 
-        self.set_polygon_parallelogram((0,0), 6, math.pi/3)
+#        self.set_polygon_parallelogram((0,0), 6, math.pi/3)
         self.polygon_grid_points = self.grid_points_covered_by_polygon()
 
         self.update_all_circles()
@@ -223,8 +226,7 @@ class UnitCell:
         tolerance = 1*10**(-8)
         integer_points = []
         for p in self.polygon_grid_points:
-            circles = self.circle_index.query(p)
-            for c in circles:
+            for c in self.fundamental_circles:
                 if p.within(c)\
                 or c.exterior.distance(p) < tolerance:
                     integer_points.append(p)
@@ -235,8 +237,6 @@ class UnitCell:
         self.all_circles = list(self.fundamental_circles)
         for circle in self.fundamental_circles:
             self.all_circles.extend(self.gen_wrapped_copies(circle))
-
-        self.circle_index = STRtree(self.all_circles)
 
     def gen_wrapped_copies(self, circle):
         copies = []
@@ -254,10 +254,19 @@ class UnitCell:
                     copies.append(new_circle)
         return copies
 
-# test shapes
-polygon = Polygon([[0,0], [0,10], [10,10], [10,0]])
-translation_vectors = np.array([(10,0), (0,10)])
+k=10
+vertices = [(k*1, 0),
+             (round(k*0.5), round(k*0.8660254037844386)),
+             (round(k*-0.5), round(k*0.8660254037844386)),
+             (round(k*-1), 0),
+             (round(k*-0.5), round(k*-0.8660254037844386)),
+             (round(k*0.5), round(k*-0.8660254037844386))]
+t_vectors = [(k*3, 0),
+             (round(k*1.5), round(k*2.598076211))]
 
-unit_cell = UnitCell(polygon, translation_vectors, [1, 1, 1])
+polygon = Polygon(vertices)
+
+unit_cell = UnitCell(polygon, t_vectors, [1, 1, 1])
 gui = PlaneGUI(unit_cell)
 gui.run()
+
