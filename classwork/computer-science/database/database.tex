@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\pagestyle{fancy}
+\fancyhead[l]{Andrew O'Dwyer}
+\fancyhead[c]{Database Notes}
+\fancyhead[r]{\today}
+
+\begin{document}
+
+\section{Transaction Processing}
+\huge
+What are the primary considerations regarding 
+transaction processing?
+
+\large
+You must follow the ACID acronym:
+
+Atomicity: A transaction must either completely succeed or 
+completely fail. This means that in the case that a section
+of the transaction fails, all changes should be rolled back.
+
+Consistency: The state before and after should be the same.
+This could mean that the total money in the database is the 
+same for a bank or there is only one person with an item in 
+a game.
+
+Isolation: If a transaction is processing, nothing else
+can transact with the data being operated on.
+
+Durability: If a transaction has occurred, then it should be 
+saved on permanent storage so it is commited even in the event
+of system failure (ram data lost)
+
+\subsection{Questions}
+\subsubsection{1(a):}
+\textbf{RestaurantReview is a website that allows users to 
+leave reviews and ratings for different restaurants.}
+
+\textbf{The website uses a database with the following structure.}
+
+\textbf{The database management system ensures referential 
+integrity is maintained.}
+
+\textbf{Whenever a review is added to the system, the 
+restaurant’s average rating is updated. This transaction 
+is ACID.}
+
+\textbf{The A in ACID refers to Atomic.}
+
+\textbf{Describe what is meant by the term ‘Atomic’ in the 
+context of ACID transactions. You should refer to the 
+example of a review being added.}
+
+ANSWER
+
+Atomic means that a transaction either occurs completely
+or doesn't occur at all. In the context of a review, a 
+transaction would include creating the review and updating
+the restaurants average rating. If one fails the other doesn't
+occur.
+
+\subsubsection{1.b}
+\textbf{
+Whenever a review is added to the system, the restaurant’s average rating is updated. This transaction is ACID.}
+
+\textbf{
+The A in ACID refers to Atomic.}
+
+\textbf{
+State what the letters CID refer to in ACID.}
+
+ANSWER
+
+C reffers to consistency, I reffers to isolation and D reffers
+to durability.
+
+
+\end{document}

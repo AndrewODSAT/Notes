@@ -1,0 +1,16 @@
+A charity relies on fast transaction processing for online donations. 
+Explain how the architectural feature of Pipelining benefits the charitys system performance.
+
+Transaction processing is the process of managing the query's to a database such that there
+are no errors. This means it should follow the ACID rules of atomicity, consistency, integrity
+and durability. This means that a transaction either completes fully or not at all
+can occur at a time, the overall structure of the data stays the same, only one transaction on a piece of
+data should be processed at a time and finally data should be saved to permanent storage after a transaction.
+
+Pipelining is the process of running multiple instructions at once on a cpu. This improves performance
+as it can perform more instructions in the same time frame. It does this by executing instructions
+while data is being fetched and/or decoded. However it can only do this when the data being fetched is
+not required by the instruction being executed. 
+
+The charity will need to store the data and respond fast so staff and donators aren't left waiting for
+the process to complete. 
